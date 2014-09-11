@@ -10,7 +10,7 @@ module Hubspot
 
     def submit(params={})
       resp = HTTParty.post(url, body: params)
-      raise(Hubspot::RequestError.new(resp, "Cannot create contact with email: #{email}")) unless resp.success?
+      raise(Hubspot::RequestError.new(resp, "Cannot submit form with params: #{params}")) unless resp.success?
       resp.body
     end
   end
