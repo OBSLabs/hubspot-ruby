@@ -9,7 +9,7 @@ module Hubspot
     end
 
     def submit(params={})
-      resp = HTTParty.post(url, body: params)
+      resp = HTTParty.post(url, body: params, headers: {"Content-Type" => "application/x-www-form-urlencoded"})
       raise(Hubspot::RequestError.new(resp, "Cannot submit form with params: #{params}")) unless resp.success?
       resp.body
     end
